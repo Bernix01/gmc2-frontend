@@ -12,15 +12,14 @@ function SearchBar() {
     if (value != "") {
       for (let indice in paises) {
         let pais = paises[indice];
-        if (pais.startsWith(value)) {
+        if (pais.toLowerCase().startsWith(value.toLowerCase())) {
           paisT=""
           paisT=paisT.concat(pais)
           opciones.push({ value: pais });
         }else if(value.indexOf(",")!==-1){
           let arrSplit=value.split(",");
           let valor =arrSplit[arrSplit.length-1]
-          console.log(value)
-          if (pais.startsWith(valor) ) {
+          if (pais.toLowerCase().startsWith(valor.toLowerCase())) {
             opciones.push({ value: paisT.concat(",").concat(pais) });
             paisT=value.substring(0,value.lastIndexOf(","))
           }
@@ -28,7 +27,6 @@ function SearchBar() {
         }
       }
     }
-    console.log(opciones)
     setOptions(opciones);
 
 
