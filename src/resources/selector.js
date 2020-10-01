@@ -7,7 +7,7 @@ export var loadCountries = () => {
     .then(function (array) {
       for (let obj in array) {
         let country = array[obj].name.en;
-        if (country != "") {
+        if (country !== "") {
           paises.push(country)
         }
       }
