@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import {AutoComplete, Input, Tooltip} from 'antd'
 import {ArrowRightOutlined} from '@ant-design/icons'
-import loadCountries from '../resources/selector';
+import * as selector from '../resources/selector';
 
-let paises=loadCountries();
+
+
+let paises=selector.loadCountries();
 let paisT = "";
 function SearchBar() {
   const [options, setOptions] = useState([]); 

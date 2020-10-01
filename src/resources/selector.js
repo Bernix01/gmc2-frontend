@@ -1,8 +1,7 @@
-let loadCountries = () => {
+export var loadCountries = () => {
   let paises=[]
   fetch("https://static.openfoodfacts.org/data/taxonomies/countries.json")
     .then(function (resultado) {
-      console.log(resultado.json)
       return resultado.json();
     })
     .then(function (array) {
@@ -19,4 +18,22 @@ let loadCountries = () => {
   return paises;
 
 }; 
-export default loadCountries;
+
+export let getFood=(paises)=>{
+  let comidaPaises={};
+  let paisesSplit=paises.split(",");
+  for (let indice in paisesSplit){
+    let pais = paisesSplit[indice];
+    fetch(`https://world.openfoodfacts.org/country/${pais}.json`)
+      .then(function (resultado) {
+        return resultado.json();
+       
+      }).then(function (objeto){
+        let productos=objeto.products;
+        comidaPaises[pais]=productos;
+      });
+  }
+  return comidaPaises;
+}
+
+
