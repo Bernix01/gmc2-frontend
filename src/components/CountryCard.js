@@ -13,7 +13,7 @@ export function CountryCard({pais,productos}){
                 <Space align="center">
                   <img src={producto.image} height={50} />
                   {producto.name}
-                  <img src={producto.grupo} height={50} />
+                  <img src={producto.nova_group} height={50} />
                 </Space>
               </div>
             </p>

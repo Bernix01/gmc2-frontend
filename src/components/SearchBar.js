@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {AutoComplete, Input, Tooltip} from 'antd'
 import {ArrowRightOutlined} from '@ant-design/icons'
-import * as selector from '../resources/selector';
+import * as selector from '../resources/api';
 
 
 
