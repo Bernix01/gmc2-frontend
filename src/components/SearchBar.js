@@ -7,8 +7,10 @@ import * as selector from '../resources/api';
 
 let paises=selector.loadCountries();
 let paisT = "";
-function SearchBar() {
+
+function SearchBar({setValue,setCambio}) {
   const [options, setOptions] = useState([]); 
+  const [val,setVal]=useState("")
   const handleSearch=(value)=>{
     let opciones=[]
     if (value !== "") {
@@ -29,13 +31,14 @@ function SearchBar() {
         }
       }
     }
+    setVal(value)
     setOptions(opciones);
 
 
   }
 return (
   <section >
-    <div style={{ transform: "scale(2)" }}>
+    <div >
       Travel, Eat, Stay
       <div>
         <AutoComplete options={options} onSearch={handleSearch}>
@@ -44,7 +47,11 @@ return (
             style={{ width: 500 }}
             suffix={
               <Tooltip>
-                <ArrowRightOutlined />
+                <ArrowRightOutlined onClick={()=>{
+                  setValue(val);
+                  setCambio(true);
+                }
+                }/>
               </Tooltip>
             }
           />

@@ -19,7 +19,7 @@ export var loadCountries = () => {
 
 }; 
 
-export  let getFood= (paises)=>{
+export let getFood=(paises)=>{
   let comidaPaises={};
   let paisesSplit=paises.split(",");
   for (let indice in paisesSplit){

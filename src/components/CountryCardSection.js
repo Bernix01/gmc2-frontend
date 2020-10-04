@@ -1,29 +1,23 @@
 import React from "react"
-import * as api from "../resources/api"
 import { CountryCard } from "./CountryCard";
-export function CountryCardSection({paises}){
+import { Row,Col} from 'antd';
 
-    let productos=  api.getFood(paises);
-    return <div>{_obtenerListaProductos(productos)}</div>;
+export function CountryCardSection({paises}){
+    let products=_obtenerListaProductos(paises)
+    return (
+      <div className="site-card-wrapper">
+        <Row gutter={16}>{products}</Row>
+      </div>
+    );
 }
 
-function _obtenerListaProductos(productos){
-    let list_card=[] 
-
-    for (let pais in productos){
-        
-        let lista=[]
-        for (let indice=0;indice<4;indice++){
-            let objetoProductos={}
-            let producto=productos[indice]
-            objetoProductos.name=producto["product_name"]
-            objetoProductos.nova_group=producto["nova_group"]
-            objetoProductos.image=producto["image_url"]
-            lista.push(objetoProductos)
-        }
-        list_card.push(
-            <CountryCard pais={pais} productos={lista}/>
-        )
+function _obtenerListaProductos(paises){
+    let list_card=[]
+    let listPaises=paises.split(",")
+    for (const pais of listPaises){
+        list_card.push(<Col>
+        <CountryCard pais={pais} />
+        </Col>);
     }
     return list_card;
 
