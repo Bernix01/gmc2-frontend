@@ -14,6 +14,22 @@ let useProducts = (setProducts, country) => {
   }, [country]);
 };
 
+function _getCleanProducts(productos){
+  let cont=0
+  let clean_products=[]
+  while(clean_products.length<3 &&cont<productos.length){
+    let producto=productos[cont]
+    let imagen = producto["image_url"];
+    let name = producto.product_name;
+    let nova_group=producto.nova_group;
+    if(imagen && name && nova_group){
+      clean_products.push(producto)
+    }
+    cont++;
+  }
+  return clean_products
+}
+
 export function CountryCard({pais }){
   const [products,setProducts]= useState([])
   useProducts(setProducts,pais);
@@ -22,13 +38,17 @@ export function CountryCard({pais }){
       indicator={<LoadingOutlined style={{ fontSize: 24 }}></LoadingOutlined>}
     ></Spin>
   ) : (
-    products.slice(0, 3).map((producto) => {
+    _getCleanProducts(products).map((producto) => {
+      let imagen = producto["image_url"]
+        ? producto["image_url"]
+        : "https://i.postimg.cc/jqzkmB2H/shop-01.jpg";
+        console.log(producto)
       return (
         <p>
           <Card>
             <div className="space-align-block">
-              <Space align="center">
-                <img src={producto["image_url"]} height={50} />
+              <Space align="center" >
+                <img src={imagen} height={50} />
                 {producto.product_name}
                 {producto.nova_group && (
                   <img
