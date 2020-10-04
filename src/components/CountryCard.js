@@ -49,14 +49,16 @@ export function CountryCard({pais }){
           <Card style={{margin:"10px", height:98,background:"#e39f9f"}} >
             <div className="space-align-block">
               <Space align="center" >
-                <img src={imagen} height={50} />
-                <div>{producto.product_name}</div>
+                <img src={imagen} height={50} width={50}/>
+                <div style={{fontSize:"0.75vw" } }>{producto.product_name}</div>
                 {producto.nova_group && (
                   <img
                     src={`https://static.openfoodfacts.org/images/misc/nova-group-${producto.nova_group}.svg`}
                     height={50}
+                    width={50}
                   />
                 )}
+                
               </Space>
             </div>
           </Card>
@@ -69,6 +71,7 @@ export function CountryCard({pais }){
         <Card title={pais} bordered={false} style={{ width: 300 ,height:450,background:"#e39f9f"}}>
           {producto
              }
+             Ver mas
         </Card>
       </div>
     );
