@@ -10,12 +10,16 @@ function App() {
   console.log(value==="" )
   let countrySection= value!=="" && cambio ? <CountryCardSection paises={value} /> : <div/>
   return (
-    <div className="App-content" style={{ transform: value==="" || !cambio ? "scale(2)": "scale(1)" }}>
-      <section>
-      <SearchBar setValue={setValue} setCambio={setCambio}></SearchBar>
-      <br/>
-      <br/>
-      {countrySection}
+    <div
+      className="App"
+      style={{ transform: value === "" || !cambio ? "scale(2)" : "scale(1)" }}
+    >
+      <section className="App-content">
+        <SearchBar setValue={setValue} setCambio={setCambio}></SearchBar>
+        <br />
+        <br />
+
+        {countrySection}
       </section>
     </div>
   );

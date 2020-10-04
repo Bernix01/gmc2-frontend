@@ -45,11 +45,11 @@ export function CountryCard({pais }){
         console.log(producto)
       return (
         <p>
-          <Card>
+          <Card style={{margin:"10px", height:98}} >
             <div className="space-align-block">
               <Space align="center" >
                 <img src={imagen} height={50} />
-                {producto.product_name}
+                <div>{producto.product_name}</div>
                 {producto.nova_group && (
                   <img
                     src={`https://static.openfoodfacts.org/images/misc/nova-group-${producto.nova_group}.svg`}
