@@ -1,18 +1,19 @@
 import React , {useEffect,useState} from 'react';
 import { Card, Space, Spin } from "antd";
 import { LoadingOutlined } from '@ant-design/icons';
+import Axios from 'axios';
 
 let useProducts = (setProducts, country) => {
   useEffect(() => {
-    fetch(`https://world.openfoodfacts.org/country/${country}.json`)
-      .then(function (resultado) {
-        return resultado.json();
+    Axios.get(`http://localhost:8000/products/${country}`)
+      .then((resultado) => {
+        setProducts(resultado.data.products)
       })
-      .then(function (objeto) {
-        setProducts(objeto.products);
-      });
+      .catch((error) => console.log(error));
   }, [country]);
-};
+}
+  
+
 
 function _getCleanProducts(productos){
   let cont=0
@@ -45,7 +46,7 @@ export function CountryCard({pais }){
         console.log(producto)
       return (
         <p>
-          <Card style={{margin:"10px", height:98}} >
+          <Card style={{margin:"10px", height:98,background:"#e39f9f"}} >
             <div className="space-align-block">
               <Space align="center" >
                 <img src={imagen} height={50} />
@@ -65,7 +66,7 @@ export function CountryCard({pais }){
   );
     return (
       <div className="site-card-border-less-wrapper">
-        <Card title={pais} bordered={false} style={{ width: 300 }}>
+        <Card title={pais} bordered={false} style={{ width: 300 ,height:450,background:"#e39f9f"}}>
           {producto
              }
         </Card>

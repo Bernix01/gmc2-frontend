@@ -8,7 +8,7 @@ import * as selector from '../resources/api';
 let paises=selector.loadCountries();
 let paisT = "";
 
-function SearchBar({setValue,setCambio}) {
+function SearchBar({setValue,setCambio,cambio}) {
   const [options, setOptions] = useState([]); 
   const [val,setVal]=useState("")
   const handleSearch=(value)=>{
@@ -38,20 +38,29 @@ function SearchBar({setValue,setCambio}) {
   }
 return (
   <section >
-    <div >
-      Travel, Eat, Stay
-      <div>
-        <AutoComplete options={options} onSearch={handleSearch} onChange={(val)=>{setVal(val)}} onSelect={(val)=>setVal(val)} >
+    <div style={{ transform: val === "" || !cambio ? "scale(2)" : "scale(1)" }}> 
+      <div style={{color:"#000000"}}>Travel, Eat, Stay</div>
+      <div >
+        <AutoComplete 
+        
+          options={options}
+          onSearch={handleSearch}
+          onChange={(val) => {
+            setVal(val);
+          }}
+          onSelect={(val) => setVal(val)}
+        >
           <Input
             placeholder="Type Countries"
-            style={{ width: 500 }}
+            style={{ width: 500,background:"#f7e9e9" }}
             suffix={
               <Tooltip>
-                <ArrowRightOutlined onClick={()=>{
-                  setValue(val);
-                  setCambio(true);
-                }
-                }/>
+                <ArrowRightOutlined
+                  onClick={() => {
+                    setValue(val);
+                    setCambio(true);
+                  }}
+                />
               </Tooltip>
             }
           />

@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("./assets/bacground.jpeg");
+  background-size: cover;
+  position: relative;
 }
 
 .App-logo {
@@ -14,7 +17,6 @@
 }
 
 .App-content {
-  background-color: #df613b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
