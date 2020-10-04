@@ -41,7 +41,7 @@ return (
     <div >
       Travel, Eat, Stay
       <div>
-        <AutoComplete options={options} onSearch={handleSearch}>
+        <AutoComplete options={options} onSearch={handleSearch} onChange={(val)=>{setVal(val)}} onSelect={(val)=>setVal(val)} >
           <Input
             placeholder="Type Countries"
             style={{ width: 500 }}

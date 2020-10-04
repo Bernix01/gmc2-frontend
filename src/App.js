@@ -7,12 +7,16 @@ import SearchBar from './components/SearchBar'
 function App() {
   const [cambio,setCambio]=useState(false);
   const [value,setValue]=useState("");
-  console.log(value===" " && cambio)
-  let countrySection= value===" " && cambio ? <CountryCardSection paises={value} /> : <div/>
+  console.log(value==="" )
+  let countrySection= value!=="" && cambio ? <CountryCardSection paises={value} /> : <div/>
   return (
-    <div className="App-content" style={{ transform: !(value===" " && cambio) ? "scale(2)": "scale(1)" }}>
+    <div className="App-content" style={{ transform: value==="" || !cambio ? "scale(2)": "scale(1)" }}>
+      <section>
       <SearchBar setValue={setValue} setCambio={setCambio}></SearchBar>
+      <br/>
+      <br/>
       {countrySection}
+      </section>
     </div>
   );
 }
