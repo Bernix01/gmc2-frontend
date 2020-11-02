@@ -74,7 +74,7 @@ export function CountryCard({pais }){
       
       >
         {
-          products.map((producto) => {
+          _getCleanProducts(products).map((producto) => {
             let imagen = producto["image_url"]
               ? producto["image_url"]
               : "https://i.postimg.cc/jqzkmB2H/shop-01.jpg";
